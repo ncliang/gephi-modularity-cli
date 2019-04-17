@@ -39,7 +39,6 @@ public class Options extends OptionsBase {
     )
     public double resolution;
 
-
     @Option(
             name = "out",
             abbrev = 'o',
