@@ -1,5 +1,6 @@
 package com.nigelliang;
 
+import com.google.common.annotations.VisibleForTesting;
 import org.gephi.graph.api.GraphController;
 import org.gephi.graph.api.GraphModel;
 import org.gephi.io.exporter.api.ExportController;
@@ -21,6 +22,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class GephiController {
+    @VisibleForTesting
     Workspace workspace;
 
     public GephiController() {
@@ -42,7 +44,7 @@ public class GephiController {
     }
 
     public GephiController executeModularity(double resolution) {
-        GraphModel graphModel = Lookup.getDefault().lookup(GraphController.class).getGraphModel();
+        GraphModel graphModel = Lookup.getDefault().lookup(GraphController.class).getGraphModel(this.workspace);
         Modularity modularity = new Modularity();
         modularity.setResolution(resolution);
         modularity.execute(graphModel);
